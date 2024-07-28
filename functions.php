@@ -79,6 +79,7 @@ function theme_scripts() {
     wp_enqueue_style('app-min', get_template_directory_uri() . '/assets/css/app.min.css');
     wp_enqueue_style('icon-min', get_template_directory_uri() . '/assets/css/icon.min.css');
     wp_enqueue_style('ie-min', get_template_directory_uri() . '/assets/css/ie.min.css');
+    wp_enqueue_style('custom-css', get_template_directory_uri() . '/css/custom.css');
     wp_style_add_data( 'theme-style', 'rtl', 'replace' );
 
     wp_enqueue_script( 'theme-jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), _S_VERSION, true );
@@ -92,11 +93,10 @@ add_action( 'wp_enqueue_scripts', 'theme_scripts' );
 
 // custom functions
     require get_template_directory() . '/includes/custom.php';
-    require get_template_directory() . '/includes/image-sizes.php';
 // custom functions end
 
 // CPT
-    require get_template_directory() . '/includes/cpt/faq.php';
+    require get_template_directory() . '/includes/cpt/career.php';
 // CPT end
 
 ?>
