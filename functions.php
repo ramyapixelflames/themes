@@ -118,6 +118,15 @@ function add_security_headers() {
 add_action('send_headers', 'add_security_headers');
 
 
+function remove_version_query_string($src) {
+  if (strpos($src, 'ver=') !== false) {
+      $src = remove_query_arg('ver', $src);
+  }
+  return $src;
+}
+add_filter('style_loader_src', 'remove_version_query_string', 10, 2);
+add_filter('script_loader_src', 'remove_version_query_string', 10, 2);
+
 
 
 
