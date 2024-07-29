@@ -99,4 +99,26 @@ add_action( 'wp_enqueue_scripts', 'theme_scripts' );
     require get_template_directory() . '/includes/cpt/career.php';
 // CPT end
 
+// Disable XML-RPC
+add_filter('xmlrpc_enabled', '__return_false');
+
+// Disable File Editing
+define('DISALLOW_FILE_EDIT', true);
+
+// Security Headers
+function add_security_headers() {
+  header("Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self';");
+  header("X-Content-Type-Options: nosniff");
+  header("X-Frame-Options: SAMEORIGIN");
+  header("X-XSS-Protection: 1; mode=block");
+  header("Strict-Transport-Security: max-age=31536000; includeSubDomains; preload");
+  header("Referrer-Policy: no-referrer, strict-origin-when-cross-origin");
+  header("Permissions-Policy: geolocation=(self), microphone=()");
+}
+add_action('send_headers', 'add_security_headers');
+
+
+
+
+
 ?>
